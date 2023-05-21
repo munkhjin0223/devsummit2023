@@ -31,3 +31,13 @@ export async function deleteTodo(id: string) {
     return { error };
   }
 }
+
+export async function getTodoById(id: string) {
+  try {
+    const todoFromDB = await prisma.todos.findUnique({ where: { id } });
+
+    return { todo: todoFromDB };
+  } catch (error) {
+    return { error };
+  }
+}

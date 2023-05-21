@@ -1,5 +1,6 @@
-import TodoForm from '@/components/todo/TodoForm';
-import TodoList from '@/components/todo/TodoList';
+import { ClientComponent, ServerComponent } from '@/components/ComponentWrappers';
+import TodoForm from '@/components/todo/Form';
+import TodoList from '@/components/todo/List';
 import { getTodos, createTodo, deleteTodo } from '@/lib/prisma/todo';
 
 export default async function Home() {
@@ -16,11 +17,27 @@ export default async function Home() {
   };
 
   return (
-    <div className="sm:container mx-auto mt-10">
-      <h1 className="my-2">Todo</h1>
-      <div>
-        <TodoForm addTodo={addTodo} />
-        <TodoList todos={todos} deleteTodo={removeTodo} />
+    <div className="sm:container mx-auto mt-10 h-screen">
+      <ServerComponent>
+        <h1 className="mt-2 mb-10 text-5xl">Todo</h1>
+        <div>
+          <ClientComponent>
+            <TodoForm addTodo={addTodo} />
+          </ClientComponent>
+          <ClientComponent>
+            <TodoList todos={todos} deleteTodo={removeTodo} />
+          </ClientComponent>
+        </div>
+      </ServerComponent>
+      <div
+        style={{
+          display: 'flex',
+          gap: '1rem',
+        }}
+        className=""
+      >
+        <ServerComponent>Server Component</ServerComponent>
+        <ClientComponent>Client Component</ClientComponent>
       </div>
     </div>
   );
