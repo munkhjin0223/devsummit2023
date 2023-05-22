@@ -25,7 +25,13 @@ const TodoForm = ({ addTodo }: Props) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input type="text" value={text} onChange={e => setText(e.target.value)} placeholder="Add Todo..." />
+      <input
+        type="text"
+        value={text}
+        onChange={e => setText(e.target.value)}
+        className="text-xl color-black"
+        placeholder="Add Todo..."
+      />
     </form>
   );
 };

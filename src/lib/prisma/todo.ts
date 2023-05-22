@@ -1,9 +1,9 @@
-import { Todo } from '@/types';
+import { Prisma, Todo } from '@prisma/client';
 import prisma from '.';
 
 export async function getTodos() {
   try {
-    const todos = await prisma.todos.findMany();
+    const todos = await prisma.todo.findMany();
 
     return { todos };
   } catch (error: any) {
@@ -12,9 +12,19 @@ export async function getTodos() {
   }
 }
 
-export async function createTodo(todo: Todo) {
+export async function createTodo(todo: Prisma.TodoCreateInput) {
   try {
-    const todoFromDB = await prisma.todos.create({ data: todo });
+    const todoFromDB = await prisma.todo.create({ data: todo });
+
+    return { todo: todoFromDB };
+  } catch (error) {
+    return { error };
+  }
+}
+
+export async function updateTodo(id: string, todo: Prisma.TodoUpdateInput) {
+  try {
+    const todoFromDB = await prisma.todo.update({ where: { id }, data: todo });
 
     return { todo: todoFromDB };
   } catch (error) {
@@ -24,7 +34,7 @@ export async function createTodo(todo: Todo) {
 
 export async function deleteTodo(id: string) {
   try {
-    const todoFromDB = await prisma.todos.delete({ where: { id } });
+    const todoFromDB = await prisma.todo.delete({ where: { id } });
 
     return { todo: todoFromDB };
   } catch (error) {
@@ -34,7 +44,7 @@ export async function deleteTodo(id: string) {
 
 export async function getTodoById(id: string) {
   try {
-    const todoFromDB = await prisma.todos.findUnique({ where: { id } });
+    const todoFromDB = await prisma.todo.findUnique({ where: { id } });
 
     return { todo: todoFromDB };
   } catch (error) {

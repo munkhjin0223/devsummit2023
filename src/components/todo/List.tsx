@@ -1,6 +1,6 @@
 'use client';
 
-import { Todo } from '@/types';
+import { Todo } from '@prisma/client';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 import Item from './Item';
@@ -8,21 +8,14 @@ import Item from './Item';
 type Props = {
   todos: Todo[];
   deleteTodo: (id: string) => void;
+  toggleTodo: (id: string, completed: boolean) => void;
 };
 
-const List = ({ todos, deleteTodo }: Props) => {
-  const router = useRouter();
-
-  const onClickDelete = (id: string) => {
-    deleteTodo(id);
-
-    router.refresh();
-  };
-
+const List = ({ todos, deleteTodo, toggleTodo }: Props) => {
   return (
-    <ul className="mt-6">
+    <ul className="py-2">
       {todos.map(todo => (
-        <Item key={todo.id} todo={todo} onClickDelete={onClickDelete}></Item>
+        <Item key={todo.id} todo={todo} toggleTodo={toggleTodo} deleteTodo={deleteTodo}></Item>
       ))}
     </ul>
   );
