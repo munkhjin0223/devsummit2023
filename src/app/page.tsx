@@ -1,6 +1,5 @@
 import { ClientComponent, ServerComponent } from '@/components/ComponentWrappers';
-import TodoForm from '@/components/todo/Form';
-import TodoList from '@/components/todo/List';
+import { TodoForm, TodoList } from '@/components/todo';
 import { getTodos } from '@/lib/prisma/todo';
 
 export default async function Home() {

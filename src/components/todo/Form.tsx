@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, experimental_useOptimistic as useOptimistic } from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { addTodo } from '@/app/actions/todo';
 

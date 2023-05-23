@@ -6,7 +6,7 @@ export const addTodo = async (text: string) => {
   await createTodo({ id: Math.random().toString(), text });
 };
 
-export const toggleTodo = async (id: string, completed: boolean) => {
+export const editTodo = async (id: string, completed: boolean) => {
   await updateTodo(id, { completed });
 };
 

@@ -1,6 +1,6 @@
 'use client';
 
-import { toggleTodo, removeTodo } from '@/app/actions/todo';
+import { editTodo, removeTodo } from '@/app/actions/todo';
 import { Todo } from '@prisma/client';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -17,7 +17,7 @@ export default function Item({ todo }: Props) {
   function onClickCompleted() {
     setCompleted(!completed);
 
-    toggleTodo(todo.id, !completed);
+    editTodo(todo.id, !completed);
   }
 
   function onClickDelete() {
