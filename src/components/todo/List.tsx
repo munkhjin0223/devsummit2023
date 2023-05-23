@@ -10,7 +10,7 @@ type Props = {
 
 const List = ({ todos }: Props) => {
   return (
-    <ul className="py-2">
+    <ul className="py-1">
       {todos.map(todo => (
         <Item key={todo.id} todo={todo}></Item>
       ))}

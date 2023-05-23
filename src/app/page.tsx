@@ -7,22 +7,12 @@ export default async function Home() {
 
   return (
     <div className="max-w-4xl mx-auto mt-10 h-screen">
-      <ServerComponent>
-        <h1 className="my-2 mb-10 text-5xl text-center">Todo</h1>
-        <div>
-          <ClientComponent>
-            <TodoForm />
-          </ClientComponent>
-          <div className="h-4"></div>
-          <ClientComponent>
-            <TodoList todos={todos} />
-          </ClientComponent>
-          <div className="h-2"></div>
-        </div>
-      </ServerComponent>
-      <div className="flex mt-10 align-right">
-        <ServerComponent>Server Component</ServerComponent>
-        <ClientComponent>Client Component</ClientComponent>
+      <h1 className="my-2 mb-10 text-5xl text-center">Todo</h1>
+      <div>
+        <TodoForm />
+        <div className="h-4"></div>
+        <TodoList todos={todos} />
+        <div className="h-2"></div>
       </div>
     </div>
   );
