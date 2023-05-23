@@ -1,13 +1,10 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, experimental_useOptimistic as useOptimistic } from 'react';
 import { useRouter } from 'next/navigation';
+import { addTodo } from '@/app/actions/todo';
 
-type Props = {
-  addTodo: (text: string) => void;
-};
-
-const TodoForm = ({ addTodo }: Props) => {
+const TodoForm = () => {
   const router = useRouter();
 
   const [text, setText] = useState('');

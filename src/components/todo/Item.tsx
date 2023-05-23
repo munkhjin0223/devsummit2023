@@ -1,16 +1,15 @@
 'use client';
 
+import { toggleTodo, removeTodo } from '@/app/actions/todo';
 import { Todo } from '@prisma/client';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 type Props = {
   todo: Todo;
-  deleteTodo: (id: string) => void;
-  toggleTodo: (id: string, completed: boolean) => void;
 };
 
-export default function Item({ todo, deleteTodo, toggleTodo }: Props) {
+export default function Item({ todo }: Props) {
   const router = useRouter();
 
   const [completed, setCompleted] = useState(todo.completed);
@@ -22,7 +21,7 @@ export default function Item({ todo, deleteTodo, toggleTodo }: Props) {
   }
 
   function onClickDelete() {
-    deleteTodo(todo.id);
+    removeTodo(todo.id);
 
     router.refresh();
   }
