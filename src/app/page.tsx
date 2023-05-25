@@ -1,19 +1,43 @@
-import { ClientComponent, ServerComponent } from '@/components/ComponentWrappers';
-import { TodoForm, TodoList } from '@/components/todo';
-import { getTodos } from '@/lib/prisma/todo';
+import Link from 'next/link'
 
-export default async function Home() {
-  const { todos } = await getTodos();
-
+const Page = () => {
   return (
-    <div className="max-w-4xl mx-auto mt-10 h-screen">
-      <h1 className="my-2 mb-10 text-5xl text-center">Todo</h1>
-      <div>
-        <TodoForm />
-        <div className="h-4"></div>
-        <TodoList todos={todos} />
-        <div className="h-2"></div>
-      </div>
-    </div>
-  );
+    <>
+      <nav className='container py-10'>
+        <ul className='mt-6 flex gap-12'>
+          <li>
+            <Link
+              href='/ssg'
+              className='font-medium underline text-emerald-800'
+            >
+              SSG (static)
+            </Link>
+          </li>
+          <li>
+            <Link
+              href='/isr'
+              className='font-medium underline text-emerald-800'
+            >
+              ISR (revalidate)
+            </Link>
+          </li>
+          <li>
+            <Link
+              href='/ssr'
+              className='font-medium underline text-emerald-800'
+            >
+              SSR (dynamic)
+            </Link>
+          </li>
+        </ul>
+      </nav>
+      <section className='py-10'>
+        <div className='container'>
+          <h1 className='text-3xl font-bold'>Home page</h1>
+        </div>
+      </section>
+    </>
+  )
 }
+
+export default Page

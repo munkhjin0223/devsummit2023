@@ -1,4 +1,4 @@
-'use server';
+// 'use server';
 
 import { createTodo, deleteTodo, updateTodo } from '@/lib/prisma/todo';
 

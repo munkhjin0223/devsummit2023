@@ -9,15 +9,24 @@ const TodoForm = () => {
 
   const [text, setText] = useState('');
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
 
     if (!text) return;
 
-    addTodo(text);
-    setText('');
+    // addTodo(text);
+    try {
+      await fetch(`/api/todo`, {
+        method: 'POST',
+        body: JSON.stringify({ text }),
+      });
 
-    router.refresh();
+      setText('');
+
+      router.refresh();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

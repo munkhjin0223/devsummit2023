@@ -1,15 +1,10 @@
-import { Prisma, Todo } from '@prisma/client';
+import { Prisma } from '@prisma/client';
 import prisma from '.';
 
 export async function getTodos() {
-  try {
-    const todos = await prisma.todo.findMany();
+  const todos = await prisma.todo.findMany();
 
-    return { todos };
-  } catch (error: any) {
-    console.error(error.message);
-    return { error, todos: [] as Todo[] };
-  }
+  return { todos };
 }
 
 export async function createTodo(todo: Prisma.TodoCreateInput) {
