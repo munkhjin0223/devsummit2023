@@ -1,7 +1,7 @@
 import { getAllTodos, getTodoById } from '@/lib/mongo/todos'
 import { notFound } from 'next/navigation'
 
-export const dynamicParams = false
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
   const { todos } = await getAllTodos()

@@ -12,7 +12,7 @@ const Page = async ({ params }) => {
     <section className='py-20'>
       <div className='container'>
         <h1 className='text-3xl font-bold'>Dynamic (SSR)</h1>
-        <p className='text-lg font-medium mt-6 border p-4'>{todo?.text}</p>
+        <p className='text-lg font-medium mt-6 border p-4'>{todo.text}</p>
       </div>
     </section>
   )
