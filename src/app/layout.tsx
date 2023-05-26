@@ -12,11 +12,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={inter.className}>
       <body>
-        <header className="bg-gray-100 py-4">
-          <div className="container">
-            <h1 className="text-3xl font-bold mb-10 bg-emerald-100 w-fit px-2 text-emerald-800">Home</h1>
-          </div>
-        </header>
         <section>{children}</section>
       </body>
     </html>
