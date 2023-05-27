@@ -12,5 +12,5 @@ model Todo {
   text String
   completed Boolean @default(false)
 
-  @@map("todos")
+  @@map("todos-sa")
 }
