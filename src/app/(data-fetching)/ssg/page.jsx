@@ -1,6 +1,6 @@
 import Link from "next/link";
 import NewTodoForm from "@/components/todo/NewTodoForm";
-import { getAllTodos } from "@/lib/mongo/todos";
+import { getAllTodos } from "@/lib/prisma/todos";
 
 export const dynamic = "error";
 
@@ -16,8 +16,8 @@ const Page = async () => {
       <h2 className="text-xl font-semibold mt-10 border-b pb-2">Todos</h2>
       <ul className="mt-4 flex flex-col gap-1">
         {todos?.map((todo) => (
-          <li key={todo._id}>
-            <Link href={`/ssg/${todo._id}`}>{todo.text}</Link>
+          <li key={todo.id}>
+            <Link href={`/ssg/${todo.id}`}>{todo.text}</Link>
           </li>
         ))}
       </ul>

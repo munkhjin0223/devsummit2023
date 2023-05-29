@@ -1,7 +1,7 @@
-import { Prisma } from '@prisma/client';
-import prisma from '.';
+import { Prisma } from "@prisma/client";
+import prisma from ".";
 
-export async function getTodos() {
+export async function getAllTodos() {
   const todos = await prisma.todo.findMany();
 
   return { todos };
